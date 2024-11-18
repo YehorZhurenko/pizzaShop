@@ -82,7 +82,13 @@ const Home = () => {
 
   const pizzas = items.map((pizza) => (
     <Link key={pizza.id} to={`pizza/${pizza.id}`}>
-      <PizzaBlock {...pizza} />
+      <button
+        style={{
+          all: 'unset',
+        }}
+        onClick={(e) => e.preventDefault()}>
+        <PizzaBlock {...pizza} />
+      </button>
     </Link>
   ));
 
