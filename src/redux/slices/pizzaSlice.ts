@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from '../store';
 
-type FetchPizzasArgs = Record<string, string>;
-
 export const fetchPizzas = createAsyncThunk<Pizza[], Record<string, string>>(
   'pizza/fetchPizzasById',
   async (params) => {

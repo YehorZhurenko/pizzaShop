@@ -16,13 +16,6 @@ type Sort = {
   sortProperty: 'rating' | 'price' | 'title' | '-rating' | '-price' | '-title';
 };
 
-interface FilterSliceState {
-  searchValue: string;
-  categoryId: number;
-  currentPage: number;
-  sort: Sort;
-}
-
 const filterSlice = createSlice({
   name: 'filters',
   initialState,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'qs';
 import { useNavigate, Link } from 'react-router-dom';
@@ -56,14 +56,14 @@ const Home = () => {
 
       isSearch.current = true;
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     console.log('categoryId: ' + categoryId);
     getPizzas();
-  }, [categoryId, sort, searchValue, currentPage]);
+  }, [categoryId, sort, searchValue, currentPage, getPizzas]);
 
   useEffect(() => {
     if (isMounted.current) {
@@ -78,7 +78,7 @@ const Home = () => {
       navigate(`?${queryString}`);
     }
     isMounted.current = true;
-  }, [categoryId, sort, searchValue, currentPage]);
+  }, [categoryId, sort, searchValue, currentPage, navigate]);
 
   const pizzas = items.map((pizza) => (
     <Link key={pizza.id} to={`pizza/${pizza.id}`}>
