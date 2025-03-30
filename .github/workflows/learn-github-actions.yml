@@ -9,5 +9,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: install bats
       - run: npm install -g bats
+      - name: check version
       - run: bats -v
+      - name: build
+      - run: npm run build
+      - name: run tests
+      - run: npm run test
