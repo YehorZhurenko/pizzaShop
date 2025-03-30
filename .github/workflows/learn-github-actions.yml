@@ -10,10 +10,10 @@ jobs:
         with:
           node-version: '20'
       - name: install bats
-      - run: npm install -g bats
+        run: npm install -g bats
       - name: check version
-      - run: bats -v
+        run: bats -v
       - name: build
-      - run: npm run build
+        run: npm run build
       - name: run tests
-      - run: npm run test
+        run: npm run test
