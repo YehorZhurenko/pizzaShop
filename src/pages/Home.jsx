@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'qs';
 import { useNavigate, Link } from 'react-router-dom';
@@ -32,14 +32,14 @@ const Home = () => {
     dispatch(setCurrentPage(number));
   };
 
-  const getPizzas = async () => {
+  const getPizzas = useCallback(async () => {
     const sortBy = sort.replace('-', '');
     const order = sort.includes('-') ? 'asc' : 'desc';
     const filterBlock = categoryId > 0 ? 'category=' + categoryId + '&' : '';
     const searchBlock = searchValue ? '&search=' + searchValue : '';
 
     dispatch(fetchPizzas({ sortBy, order, filterBlock, searchBlock, currentPage }));
-  };
+  }, [categoryId, searchValue, currentPage, dispatch, sort]);
 
   useEffect(() => {
     if (window.location.search) {

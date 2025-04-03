@@ -7,7 +7,6 @@ import Cart from './pages/Cart';
 import FullPizza from './pages/FullPizza.tsx';
 
 import { Route, Routes } from 'react-router-dom';
-import React, { useState } from 'react';
 
 function App() {
   return (

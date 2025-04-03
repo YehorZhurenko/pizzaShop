@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -12,7 +12,7 @@ const FullPizza: React.FC = () => {
   const [pizza, setPizza] = useState<IPizza>();
   const { id } = useParams();
 
-  async function fetchPizza() {
+  const fetchPizza = useCallback(async () => {
     try {
       const { data } = await axios.get(
         'https://64e6d034b0fd9648b78eeabd.mockapi.io/api/v1/items/' + id,
@@ -22,11 +22,11 @@ const FullPizza: React.FC = () => {
 
       console.log('done fetch for ' + id);
     } catch (error) {}
-  }
+  }, [id]);
 
   useEffect(() => {
     fetchPizza();
-  }, []);
+  }, [fetchPizza]);
 
   if (!pizza) {
     return <>'Загрузка ...'</>;
